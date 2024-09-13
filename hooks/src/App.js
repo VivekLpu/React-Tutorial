@@ -48,6 +48,7 @@ export default App;
 
 */
 
+/*
 import React, { useState } from "react";
 
 function TodoList() {
@@ -89,3 +90,20 @@ function TodoList() {
 }
 
 export default TodoList;
+
+*/
+
+//CSS Moduls in React
+import './App.css';
+import ModuleButton from './Components/ModuleButton';
+const App= () => {
+  return(
+    <div>
+      <button className="btn"> Button 1</button>
+      <button className="btn"> Button 2</button>
+      <ModuleButton/>
+    </div>
+  )
+}
+
+export default App;
