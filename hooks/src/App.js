@@ -93,6 +93,7 @@ export default TodoList;
 
 */
 
+/** 
 //CSS Moduls in React
 import './App.css';
 import ModuleButton from './Components/ModuleButton';
@@ -107,3 +108,71 @@ const App= () => {
 }
 
 export default App;
+*/
+
+/*
+import React, { useState } from "react";
+
+function App() {
+  const [tasks, setTasks] = useState([]);
+  const [newTask, setNewTask] = useState("");
+
+  function handleAddTask() {
+    // Check if input is empty
+    if (newTask.trim() === "") return;
+
+    // Create a new task
+    const newTaskAdd = {
+      id: Date.now(), // Use Date.now() as a unique identifier
+      name: newTask,
+    };
+
+    // Update the state
+    setTasks([...tasks, newTaskAdd]);
+    setNewTask("");
+  }
+
+  function handleDelete(id) {
+    // Remove the task with the specified ID
+    setTasks(tasks.filter((task) => task.id !== id));
+  }
+
+  return (
+    <div>
+      <h1>Task List</h1>
+      <input
+        type="text"
+        value={newTask}
+        onChange={(e) => setNewTask(e.target.value)}
+        placeholder="Add a new Task"
+      />
+      <button onClick={handleAddTask}>Add Task</button>
+      <ul>
+        {tasks.map((task) => (
+          <li key={task.id}>
+            {task.name}{" "}
+            <button onClick={() => handleDelete(task.id)}>Delete</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default App;
+*/
+
+import React from "react";
+import CatFactsComponent from './Components/catComponent';
+
+const App= () => {
+  return(
+    <div>
+      <catComponent/>
+      <CatFactsComponent/>
+    </div>
+  )
+}
+
+export default App;
+

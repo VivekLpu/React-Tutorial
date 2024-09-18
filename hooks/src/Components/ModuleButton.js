@@ -1,4 +1,4 @@
-import Styles from './buttonModule.css';
+import Styles from './button.module.css';
 const ModuleButton = () =>{
     return (
         <div>
