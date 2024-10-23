@@ -1,4 +1,4 @@
-.btn{
+/* .btn{
   background-color: blue;
   color: white;
   padding: 10px;
@@ -17,4 +17,105 @@ button{
   font-size: 16px;
   cursor: pointer;
   border-radius: 5px;
+} */
+
+/* App.css */
+
+h1{
+  text-align: center;
+}
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f7f7f7;
+  margin: 0;
+}
+
+.container {
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+.toggle-buttons {
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.toggle-buttons button {
+  border-radius: 10px;
+  flex: 1;
+  padding: 10px;
+  margin: 0 5px;
+  border: 1px solid #ccc;
+  background: #f7f7f7;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.toggle-buttons .active {
+  border-radius: 10px;
+  border: 2px solid  #27167b;
+  background:  #27167b;
+  color: white;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field {
+  margin-bottom: 15px;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-field input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-field a {
+  color: #27167b;
+  text-decoration: none;
+}
+
+.form-field a:hover {
+  text-decoration: underline;
+}
+
+.form-button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #27167b;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.form-footer {
+  text-decoration: none;
+  margin-top: 15px;
+  text-align: center;
+}
+
+a{
+  text-decoration: none;
 }
