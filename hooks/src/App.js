@@ -500,6 +500,7 @@ function SignupForm({ toggleForm }) {
 export default App;
 */
 
+/**
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -529,6 +530,182 @@ const App = () => {
           <p>{item.body}</p>
         </div>
       ))}
+    </div>
+  );
+};
+
+export default App;
+*/
+
+/*
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+const App = () => {
+  const [data, setData] = useState([]);
+  const [error, setError] = useState(null);
+  const [editingPost, setEditingPost] = useState(null);
+  const [formData, setFormData] = useState({ title: "", body: "" });
+
+  useEffect(() => {
+    // Fetch the data from API
+    axios.get("https://jsonplaceholder.typicode.com/posts")
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        setError(error);
+      });
+  }, []);
+
+  const handleEdit = (post) => {
+    setEditingPost(post);
+    setFormData({ title: post.title, body: post.body });
+  };
+
+  const handleUpdate = (id) => {
+    axios.put(`https://jsonplaceholder.typicode.com/posts/${id}`, formData)
+      .then((response) => {
+        const updatedData = data.map((post) =>
+          post.id === id ? response.data : post
+        );
+        setData(updatedData);
+        setEditingPost(null);
+      })
+      .catch((error) => {
+        setError(error);
+      });
+  };
+
+  const handleDelete = (id) => {
+    axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`)
+      .then(() => {
+        const updatedData = data.filter((post) => post.id !== id);
+        setData(updatedData);
+      })
+      .catch((error) => {
+        setError(error);
+      });
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  return (
+    <div>
+      <h1>Data Fetched</h1>
+      {error && <p style={{ color: 'red' }}>Error fetching data: {error.message}</p>}
+      {editingPost && (
+        <div>
+          <h2>Edit Post</h2>
+          <input
+            type="text"
+            name="title"
+            value={formData.title}
+            onChange={handleInputChange}
+            placeholder="Title"
+          />
+          <textarea
+            name="body"
+            value={formData.body}
+            onChange={handleInputChange}
+            placeholder="Body"
+          ></textarea>
+          <button onClick={() => handleUpdate(editingPost.id)}>Update</button>
+          <button onClick={() => setEditingPost(null)}>Cancel</button>
+        </div>
+      )}
+      {data.map((item) => (
+        <div key={item.id}>
+          <h2>{item.title}</h2>
+          <p>{item.body}</p>
+          <button onClick={() => handleEdit(item)}>Edit</button>
+          <button onClick={() => handleDelete(item.id)}>Delete</button>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default App;
+*/
+
+/*
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Home from './Components/Home';
+import About from './Components/About';
+import Contact from './Components/Contact';
+import Feedback from './Components/Feedback';  
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Home />
+  },
+  {
+    path: '/about',
+    element: <About />
+  },
+  {
+    path: '/contact',
+    element: <Contact />
+  },
+  {
+    path: '/feedback',
+    element: <Feedback />
+  },
+]);
+
+function App() {
+  return <RouterProvider router={router}></RouterProvider>;
+}
+
+export default App;
+*/
+
+import React, { useState } from "react";
+import axios from "axios";
+
+const App = () => {
+  const [userId, setUserId] = useState("");
+  const [user, setUser] = useState(null);
+  const [error, setError] = useState("");
+
+  const fetchUserDetails = async () => {
+    try {
+      setError("");
+      const response = await axios.get(`https://jsonplaceholder.typicode.com/users/${userId}`);
+      setUser(response.data);
+    } catch (err) {
+      setUser(null);
+      setError("User not found or invalid user ID.");
+    }
+  };
+
+  return (
+    <div>
+      <h2>Fetch User Details</h2>
+      <div>
+        <input
+          type="text"
+          placeholder="Enter user ID"
+          value={userId}
+          onChange={(e) => setUserId(e.target.value)}
+        />
+        <button onClick={fetchUserDetails}>Get User</button>
+      </div>
+      {error && <p style={{ color: "red" }}>{error}</p>}
+      {user && (
+        <div>
+          <h3>User Details:</h3>
+          <p>ID: {user.id}</p>
+          <p>Name: {user.name}</p>
+          <p>Email: {user.email}</p>
+          <p>City: {user.address.city}</p>
+        </div>
+      )}
     </div>
   );
 };
